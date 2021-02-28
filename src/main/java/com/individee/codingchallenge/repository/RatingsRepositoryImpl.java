@@ -1,7 +1,6 @@
 package com.individee.codingchallenge.repository;
 
 import com.individee.codingchallenge.domain.Ratings;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
@@ -21,7 +20,6 @@ public class RatingsRepositoryImpl implements RatingsQuery {
     public Ratings findFirstOrderByDate() {
         Query query = new Query();
         query.with(Sort.by(Sort.Direction.DESC, "date"));
-//        query.with(PageRequest.of(0, 1));
         return template.findOne(query, Ratings.class);
     }
 
