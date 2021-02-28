@@ -11,6 +11,11 @@ public class Currency {
     private String currency;
     private BigDecimal exchangeRate;
 
+    public Currency(String currency, BigDecimal exchangeRate) {
+        this.currency = currency;
+        this.exchangeRate = exchangeRate;
+    }
+
     @Field("currency")
     public String getName() {
         return currency;
