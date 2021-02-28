@@ -7,4 +7,5 @@ import java.time.LocalDate;
 
 public interface RatingsRepository extends MongoRepository<Ratings, LocalDate>, RatingsQuery {
 
+    Ratings findRatingsByDate(LocalDate date);
 }

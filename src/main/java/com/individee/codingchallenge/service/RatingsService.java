@@ -5,6 +5,7 @@ import com.individee.codingchallenge.repository.RatingsRepository;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+import java.time.LocalDate;
 
 @Service
 public class RatingsService {
@@ -18,5 +19,13 @@ public class RatingsService {
 
     public Ratings findLast() {
         return this.repository.findFirstOrderByDate();
+    }
+
+    public Ratings findByDate(LocalDate date) {
+        return this.repository.findRatingsByDate(date);
+    }
+
+    public void save(Ratings ratings) {
+        this.repository.save(ratings);
     }
 }
