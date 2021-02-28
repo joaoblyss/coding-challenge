@@ -1,0 +1,49 @@
+<?xml encoding="UTF-8" ?><!DOCTYPE html>
+<!--suppress HtmlUnknownTag, HtmlUnknownAttribute -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wicket="http://wicket.apache.org"
+      lang="en" xml:lang="en">
+<head>
+    <meta charset='utf-8'>
+    <title>Coding Challenge</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' type="text/css" rel='stylesheet'>
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script type='text/javascript'
+            src='https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js'></script>
+    <script type="text/javascript" src='app.js'></script>
+</head>
+<body>
+<div class="page-content page-container" id="page-content">
+    <script type='text/javascript' src='https://code.jquery.com/jquery-1.11.0.js'></script>
+<!--    <script type='text/javascript'-->
+<!--            src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>-->
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+            <div class="col-lg-5 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title" wicket:id="title"></h2>
+                        <div class="form-group">
+                            <div class="form-group row">
+                                <div class="form-control col">
+                                    <input wicket:id="rateInput" type="text" class="form-control-plaintext" />
+                                </div>
+                                <div class="form-text align-self-center text-right col-2">
+                                    <label>EUR</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <select wicket:id="rateOutputType" class="form-control"></select>
+                            </div>
+                            <p class="card-text" wicket:id="outputMessage"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
