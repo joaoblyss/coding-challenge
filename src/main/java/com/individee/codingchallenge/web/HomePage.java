@@ -1,4 +1,4 @@
-package com.individee.codingchallenge;
+package com.individee.codingchallenge.web;
 
 import com.giffing.wicket.spring.boot.context.scan.WicketHomePage;
 import com.individee.codingchallenge.domain.Ratings;
