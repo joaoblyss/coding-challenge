@@ -1,22 +1,23 @@
 package com.individee.codingchallenge.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.validation.annotation.Validated;
 
-import java.net.URI;
 import java.nio.file.Path;
 
+@Validated
 @ConfigurationProperties("ecb")
 public class ECBProperties {
 
-    private URI xrefUri;
+    private String xrefUrl;
     private Path xmlOutputPath;
 
-    public URI getXrefUri() {
-        return xrefUri;
+    public String getXrefUrl() {
+        return xrefUrl;
     }
 
-    public void setXrefUri(URI xrefUri) {
-        this.xrefUri = xrefUri;
+    public void setXrefUrl(String xrefUrl) {
+        this.xrefUrl = xrefUrl;
     }
 
     public Path getXmlOutputPath() {

@@ -1,4 +1,4 @@
-package com.individee.codingchallenge.validator;
+package com.individee.codingchallenge.web.validator;
 
 import org.apache.wicket.validation.IValidatable;
 import org.apache.wicket.validation.IValidationError;

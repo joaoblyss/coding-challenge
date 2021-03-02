@@ -3,7 +3,7 @@ package com.individee.codingchallenge;
 import com.giffing.wicket.spring.boot.context.scan.WicketHomePage;
 import com.individee.codingchallenge.domain.Ratings;
 import com.individee.codingchallenge.service.RatingsService;
-import com.individee.codingchallenge.validator.DecimalFormatValidator;
+import com.individee.codingchallenge.web.validator.DecimalFormatValidator;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
 import org.apache.wicket.markup.html.WebPage;

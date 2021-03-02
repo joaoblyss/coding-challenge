@@ -30,7 +30,6 @@ public class ExchangeRatesDailyUpdater {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ExchangeRatesDailyUpdater.class);
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
-    private static final SimpleDateFormat TIME_FORMAT = new SimpleDateFormat("HH:mm:ss");
 
     private ECBProperties properties;
     private RatingsService service;
@@ -52,34 +51,42 @@ public class ExchangeRatesDailyUpdater {
     }
 
     @PostConstruct
-    void onInit() throws IOException, JAXBException {
+    void onInit() {
         updateECBRatings();
     }
 
     @Scheduled(cron = "0 0 0 1/1 * ?")
-    public void updateECBRatings() throws IOException, JAXBException {
-        Path xmlFle = fetchFromUrl();
-        Unmarshaller unmarshaller = JAXBContext.newInstance(ECBEnvelope.class).createUnmarshaller();
-        ECBEnvelope envelope = (ECBEnvelope) unmarshaller.unmarshal(xmlFle.toFile());
-        Ratings ratings = this.converter.convert(envelope);
-        //noinspection ConstantConditions
-        Ratings persistent = this.service.findByDate(ratings.getDate());
-        if (persistent == null) {
-            this.service.save(ratings);
-            LOGGER.info("ECB ratings successfully updated");
+    public void updateECBRatings() {
+        if (this.properties.getXrefUrl() != null) {
+            try {
+                Path xmlFle = fetchFromUrl();
+                Unmarshaller unmarshaller = JAXBContext.newInstance(ECBEnvelope.class).createUnmarshaller();
+                ECBEnvelope envelope = (ECBEnvelope) unmarshaller.unmarshal(xmlFle.toFile());
+                Ratings ratings = this.converter.convert(envelope);
+                //noinspection ConstantConditions
+                Ratings persistent = this.service.findByDate(ratings.getDate());
+                if (persistent == null) {
+                    this.service.save(ratings);
+                    LOGGER.info("ECB ratings successfully updated");
+                } else {
+                    LOGGER.info("ECB ratings are up-to-date");
+                }
+            } catch (IOException | JAXBException e) {
+                LOGGER.error("Failed while attempting to reach \"%s\"");
+            }
         } else {
-            LOGGER.info("ECB ratings are up-to-date");
+            LOGGER.warn("No ECB data URL was set. Skipping update");
         }
     }
 
     Path fetchFromUrl() throws IOException {
         LOGGER.info("fetching daily currency ratings data from the ECB");
-        URI xrefUri = this.properties.getXrefUri();
+        String xrefUri = this.properties.getXrefUrl();
         Path xmlOutputPath = this.properties.getXmlOutputPath();
         if (xmlOutputPath == null) {
             xmlOutputPath = Files.createTempDirectory("ecb-xref");
         }
-        URL xrefUrl = xrefUri.toURL();
+        URL xrefUrl = URI.create(xrefUri).toURL();
         InputStream in = xrefUrl.openStream();
         Path xmlFile = xmlOutputPath.resolve(String.format("%s.xml", DATE_FORMAT.format(new Date())));
         Files.copy(in, xmlFile, StandardCopyOption.REPLACE_EXISTING);
