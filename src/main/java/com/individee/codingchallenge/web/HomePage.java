@@ -93,7 +93,7 @@ public class HomePage extends WebPage {
         String resultMessage = "";
         if (this.currencyDropdownList.isValid()) {
             String value = this.rateInput.getDefaultModelObjectAsString();
-            if (!value.isBlank()) {
+            if (!value.isEmpty()) {
                 try {
                     DecimalFormat decimalFormat = new DecimalFormat();
                     decimalFormat.setParseBigDecimal(true);
