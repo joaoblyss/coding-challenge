@@ -8,16 +8,9 @@ European Central Bank, which can be found in http://www.ecb.europa.eu/stats/euro
 Table of Contents
 =================
 
-* [Pre-Requisites](#pre-requisites)
-* [Running this Project](#running-this-project)
-    * [Clone this Repository](#clone-this-repository)
-    * [Setup Up The Database Access](#setup-up-the-database-access)
-    * [Starting the Application](#starting-the-application)
-* [Troubleshooting](#troubleshooting)
-  * [Fixing the Maven Wrapper Executable](#fixing-the-maven-wrapper-executable)
-    * [Under Linux (and Cygwin)](#under-linux-and-cygwin)
-    * [Under Windows](#under-windows)
-  * [Update CA Certificates](#update-ca-certificates)
+* [Pre-Requisites](#Pre-Requisites)
+* [Running the Project](#Running the Project)
+    * [Configuring MongoDB](#Configuring MongoDB)
 
 # Pre-Requisites
 
@@ -74,7 +67,7 @@ In the input field, type the value, in EURO, to be converted into a foreign curr
 
 >:construction: The text input still accepts alphabetic characters, but no calculation is performed unless the data input is a valid number. 
 
-# Troubleshooting
+# Toubleshooting
 
 ## Fixing the Maven Wrapper Executable
 
