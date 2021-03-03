@@ -1,6 +1,7 @@
 package com.individee.codingchallenge.web;
 
 import com.giffing.wicket.spring.boot.context.scan.WicketHomePage;
+import com.individee.codingchallenge.domain.Currency;
 import com.individee.codingchallenge.domain.Ratings;
 import com.individee.codingchallenge.service.RatingsService;
 import com.individee.codingchallenge.web.validator.DecimalFormatValidator;
@@ -23,6 +24,7 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @WicketHomePage
@@ -58,10 +60,15 @@ public class HomePage extends WebPage {
         this.outputMessage.setEscapeModelStrings(false);
 
         // initialize ratings map from the database
-        Ratings ratings = this.service.findLast();
         Map<String, BigDecimal> ratingsMap = new HashMap<>();
-        ratings.getCurrencies().forEach(currency -> ratingsMap.put(currency.getName(), currency.getExchangeRate()));
-        this.currencyDropdownList.setChoices(new ArrayList<>(ratingsMap.keySet()));
+        Ratings ratings = this.service.findLast();
+        if (ratings != null) {
+            List<Currency> currencies = ratings.getCurrencies();
+            if (currencies != null) {
+                currencies.forEach(currency -> ratingsMap.put(currency.getName(), currency.getExchangeRate()));
+            }
+            this.currencyDropdownList.setChoices(new ArrayList<>(ratingsMap.keySet()));
+        }
 
         // setup validators
         this.currencyDropdownList.add(new PatternValidator(".+"));
@@ -80,7 +87,6 @@ public class HomePage extends WebPage {
                 calculateOutputMessage(ratingsMap, target);
             }
         });
-
 
         // add components
         add(this.titleLabel);
