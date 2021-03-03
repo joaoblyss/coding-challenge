@@ -13,11 +13,11 @@ Table of Contents
     * [Clone this Repository](#clone-this-repository)
     * [Setup Up The Database Access](#setup-up-the-database-access)
     * [Starting the Application](#starting-the-application)
-  * [Troubleshooting](#troubleshooting)
-    * [Fixing the Maven Wrapper Executable](#fixing-the-maven-wrapper-executable)
-      * [Under Linux (and Cygwin)](#under-linux-and-cygwin)
-      * [Under Windows](#under-windows)
-    * [Update CA Certificates](#update-ca-certificates)
+* [Troubleshooting](#troubleshooting)
+  * [Fixing the Maven Wrapper Executable](#fixing-the-maven-wrapper-executable)
+    * [Under Linux (and Cygwin)](#under-linux-and-cygwin)
+    * [Under Windows](#under-windows)
+  * [Update CA Certificates](#update-ca-certificates)
 
 # Pre-Requisites
 
