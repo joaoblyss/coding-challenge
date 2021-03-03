@@ -49,18 +49,21 @@ $ ./mvnw spring-boot:run
 
 This is how a successful startup should look like: 
 
-<<IMAGE_SPOT>>
+![spring-run](https://user-images.githubusercontent.com/5368476/109731523-320fac00-7b9a-11eb-8f82-c7e490843dc8.JPG)
+
 
 # Basic Usage
 On the web browser, access `http://localhost:8080`. 
 
 The GUI consists two basic input fields and one output, such as this:
 
-<<IMAGE_SPOT>>
+![calculator](https://user-images.githubusercontent.com/5368476/109731758-a6e2e600-7b9a-11eb-80b7-587bd5174b7f.JPG)
+
 
 In the input field, type the value, in EURO, to be converted into a foreign currency, then select in the dropdown below the target currency. The result must be shown as below:
 
-<<IMAGE_SPOT>>
+![calc-result](https://user-images.githubusercontent.com/5368476/109731784-ae09f400-7b9a-11eb-890c-51987a37242e.JPG)
+
 
 >:construction: The text input still accepts alphabetic characters, but no calculation is performed unless the data input is a valid number. 
 
