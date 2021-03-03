@@ -74,7 +74,7 @@ In the input field, type the value, in EURO, to be converted into a foreign curr
 
 >:construction: The text input still accepts alphabetic characters, but no calculation is performed unless the data input is a valid number. 
 
-# Toubleshooting
+# Troubleshooting
 
 ## Fixing the Maven Wrapper Executable
 
