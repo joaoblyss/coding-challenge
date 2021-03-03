@@ -1,3 +1,5 @@
+[![Build Status](https://www.travis-ci.com/joaoblyss/coding-challenge.svg?branch=main)](https://www.travis-ci.com/joaoblyss/coding-challenge)
+
 # ECB Exchange Rates Calculator
 
 A simple EURO currency exchange calculator.
@@ -21,7 +23,7 @@ Table of Contents
 
 # Pre-Requisites
 
-* Java 1.8 JDK
+* Java OpenJDK 8
 * A MongoDB instance fully accessible
 
 # Running this Project
