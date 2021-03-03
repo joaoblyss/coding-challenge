@@ -6,12 +6,12 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.math.BigDecimal;
 
 @Document
-public class Currency {
+public class ExchangeRate {
 
     private String currency;
     private BigDecimal exchangeRate;
 
-    public Currency(String currency, BigDecimal exchangeRate) {
+    public ExchangeRate(String currency, BigDecimal exchangeRate) {
         this.currency = currency;
         this.exchangeRate = exchangeRate;
     }
