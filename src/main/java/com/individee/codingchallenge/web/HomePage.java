@@ -1,9 +1,9 @@
 package com.individee.codingchallenge.web;
 
 import com.giffing.wicket.spring.boot.context.scan.WicketHomePage;
-import com.individee.codingchallenge.domain.Currency;
-import com.individee.codingchallenge.domain.Ratings;
-import com.individee.codingchallenge.service.RatingsService;
+import com.individee.codingchallenge.domain.ExchangeRate;
+import com.individee.codingchallenge.domain.ECBDataset;
+import com.individee.codingchallenge.service.ExchangeRateService;
 import com.individee.codingchallenge.web.validator.DecimalFormatValidator;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
@@ -33,7 +33,7 @@ public class HomePage extends WebPage {
     private static Logger LOGGER = LoggerFactory.getLogger(HomePage.class);
 
     @SpringBean
-    private RatingsService service;
+    private ExchangeRateService service;
 
     private final Label titleLabel;
     private final TextField<String> rateInput;
@@ -61,11 +61,11 @@ public class HomePage extends WebPage {
 
         // initialize ratings map from the database
         Map<String, BigDecimal> ratingsMap = new HashMap<>();
-        Ratings ratings = this.service.findLast();
-        if (ratings != null) {
-            List<Currency> currencies = ratings.getCurrencies();
+        ECBDataset ECBDataset = this.service.findLast();
+        if (ECBDataset != null) {
+            List<ExchangeRate> currencies = ECBDataset.getExchangeRates();
             if (currencies != null) {
-                currencies.forEach(currency -> ratingsMap.put(currency.getName(), currency.getExchangeRate()));
+                currencies.forEach(exchangeRate -> ratingsMap.put(exchangeRate.getName(), exchangeRate.getExchangeRate()));
             }
             this.currencyDropdownList.setChoices(new ArrayList<>(ratingsMap.keySet()));
         }

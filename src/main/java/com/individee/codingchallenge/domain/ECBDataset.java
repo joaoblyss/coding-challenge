@@ -5,10 +5,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDate;
 import java.util.List;
 
-@Document(collection = "ratings")
-public class Ratings {
+@Document(collection = "ecb-dataset")
+public class ECBDataset {
     private LocalDate date;
-    private List<Currency> currencies;
+    private List<ExchangeRate> exchangeRates;
 
     public LocalDate getDate() {
         return date;
@@ -18,11 +18,11 @@ public class Ratings {
         this.date = date;
     }
 
-    public List<Currency> getCurrencies() {
-        return currencies;
+    public List<ExchangeRate> getExchangeRates() {
+        return exchangeRates;
     }
 
-    public void setCurrencies(List<Currency> currencies) {
-        this.currencies = currencies;
+    public void setExchangeRates(List<ExchangeRate> exchangeRates) {
+        this.exchangeRates = exchangeRates;
     }
 }

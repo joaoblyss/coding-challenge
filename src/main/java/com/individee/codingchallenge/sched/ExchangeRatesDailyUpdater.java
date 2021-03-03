@@ -1,9 +1,9 @@
 package com.individee.codingchallenge.sched;
 
 import com.individee.codingchallenge.config.ECBProperties;
-import com.individee.codingchallenge.converter.RatingsConverter;
-import com.individee.codingchallenge.domain.Ratings;
-import com.individee.codingchallenge.service.RatingsService;
+import com.individee.codingchallenge.converter.ExchangeRateConverter;
+import com.individee.codingchallenge.domain.ECBDataset;
+import com.individee.codingchallenge.service.ExchangeRateService;
 import com.individee.codingchallenge.xml.ECBEnvelope;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,8 +32,8 @@ public class ExchangeRatesDailyUpdater {
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
     private ECBProperties properties;
-    private RatingsService service;
-    private RatingsConverter converter;
+    private ExchangeRateService service;
+    private ExchangeRateConverter converter;
 
     @Inject
     public void setProperties(ECBProperties properties) {
@@ -41,12 +41,12 @@ public class ExchangeRatesDailyUpdater {
     }
 
     @Inject
-    public void setService(RatingsService service) {
+    public void setService(ExchangeRateService service) {
         this.service = service;
     }
 
     @Inject
-    public void setConverter(RatingsConverter converter) {
+    public void setConverter(ExchangeRateConverter converter) {
         this.converter = converter;
     }
 
@@ -62,11 +62,11 @@ public class ExchangeRatesDailyUpdater {
                 Path xmlFle = fetchFromUrl();
                 Unmarshaller unmarshaller = JAXBContext.newInstance(ECBEnvelope.class).createUnmarshaller();
                 ECBEnvelope envelope = (ECBEnvelope) unmarshaller.unmarshal(xmlFle.toFile());
-                Ratings ratings = this.converter.convert(envelope);
+                ECBDataset ECBDataset = this.converter.convert(envelope);
                 //noinspection ConstantConditions
-                Ratings persistent = this.service.findByDate(ratings.getDate());
+                ECBDataset persistent = this.service.findByDate(ECBDataset.getDate());
                 if (persistent == null) {
-                    this.service.save(ratings);
+                    this.service.save(ECBDataset);
                     LOGGER.info("ECB ratings successfully updated");
                 } else {
                     LOGGER.info("ECB ratings are up-to-date");

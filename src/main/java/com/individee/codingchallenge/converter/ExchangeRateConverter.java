@@ -1,7 +1,7 @@
 package com.individee.codingchallenge.converter;
 
-import com.individee.codingchallenge.domain.Currency;
-import com.individee.codingchallenge.domain.Ratings;
+import com.individee.codingchallenge.domain.ExchangeRate;
+import com.individee.codingchallenge.domain.ECBDataset;
 import com.individee.codingchallenge.xml.ECBCube;
 import com.individee.codingchallenge.xml.ECBCube2;
 import com.individee.codingchallenge.xml.ECBCube3;
@@ -16,20 +16,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Named
-public class RatingsConverter implements Converter<ECBEnvelope, Ratings> {
+public class ExchangeRateConverter implements Converter<ECBEnvelope, ECBDataset> {
 
     @Override
-    public Ratings convert(ECBEnvelope ecbEnvelope) {
-        Ratings ratings = new Ratings();
+    public ECBDataset convert(ECBEnvelope ecbEnvelope) {
+        ECBDataset ECBDataset = new ECBDataset();
         ECBCube cube = ecbEnvelope.getCube();
         ECBCube2 cube2 = cube.getCube();
         Date date = cube2.getTime();
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        ratings.setDate(localDate);
+        ECBDataset.setDate(localDate);
         List<ECBCube3> cubes = cube2.getCubes();
-        List<Currency> currencies = cubes.stream().map(c -> new Currency(c.getCurrency(), c.getRate())).collect(Collectors.toList());
-        ratings.setCurrencies(currencies);
-        return ratings;
+        List<ExchangeRate> currencies = cubes.stream().map(c -> new ExchangeRate(c.getCurrency(), c.getRate())).collect(Collectors.toList());
+        ECBDataset.setExchangeRates(currencies);
+        return ECBDataset;
     }
 
 }
