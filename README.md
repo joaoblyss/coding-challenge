@@ -5,7 +5,9 @@
 A simple EURO currency exchange calculator.
 
 The user's input, in EUROS, will be converted to foreign currencies based on cross-currency rates provided by the
-European Central Bank, which can be found in http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml.
+European Central Bank.
+
+The exchange rates are fetched daily from the European Central Bank (ECB) [Reference Rates](http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml).
 
 Table of Contents
 =================
@@ -69,7 +71,9 @@ The GUI consists two basic input fields and one output, such as this:
 ![calculator](https://user-images.githubusercontent.com/5368476/109731758-a6e2e600-7b9a-11eb-80b7-587bd5174b7f.JPG)
 
 
-In the input field, type the value, in EURO, to be converted into a foreign currency, then select in the dropdown below the target currency. The result must be shown as below:
+In the input field, type the value, in EURO, to be converted into a foreign currency, then select in the dropdown below the target currency.
+
+The result must be shown as below:
 
 ![calc-result](https://user-images.githubusercontent.com/5368476/109731784-ae09f400-7b9a-11eb-890c-51987a37242e.JPG)
 
