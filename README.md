@@ -17,6 +17,7 @@ Table of Contents
     * [Clone this Repository](#clone-this-repository)
     * [Setup Up The Database Access](#setup-up-the-database-access)
     * [Starting the Application](#starting-the-application)
+    * [Basic Usage](#basic-usage)
 * [Troubleshooting](#troubleshooting)
   * [Fixing the Maven Wrapper Executable](#fixing-the-maven-wrapper-executable)
     * [Under Linux (and Cygwin)](#under-linux-and-cygwin)
